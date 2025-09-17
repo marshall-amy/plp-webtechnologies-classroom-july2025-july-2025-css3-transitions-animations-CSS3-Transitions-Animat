@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS + JS Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>CSS & JavaScript Demo</h1>
+    <button id="colorBtn">Click Me</button>
+    <div class="fade-box"></div>
+    <div id="dynamicBox"></div>
+    <script>
+        let clickCount=0;
+        function calculateSize(base, multiplier){
+            return base*multiplier
+        }
+        function updateBox(color, scaleFactor){
+            const box=document.getElementById("dynamicBox");
+            box.style.backgroundColor=color;
+            const newSize=calculateSize(150,scaleFactor);
+            box.style.width=newSize+"px";
+            box.style.height=newSize+"px";
+            box.style.transform='rotate(${clickCount* 15}deg)';
+        }
+        document.getElementById("colorBtn").addEventListener("click",()=>{
+            clickCount++;
+            if(clickCount %2===0){
+                updateBox("tomato",1.2);
+            }else{
+                updateBox("teal",0.8);
+            }
+        })
+    </script>
+</body>
+</html>
